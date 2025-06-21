@@ -10,13 +10,13 @@ const Services = () => {
     {
       title: "Healthcare Technology",
       description: "Innovative healthcare solutions that improve patient outcomes and optimize operational efficiency across medical institutions.",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       features: ["Patient Management", "Data Security", "AI Diagnostics"]
     },
     {
       title: "Custom Development",
       description: "Tailored software solutions designed to meet your unique business requirements and drive digital transformation.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       features: ["Scalable Architecture", "Modern Technologies", "Agile Methodology"]
     }
   ];

@@ -1,5 +1,5 @@
 
-import { contact } from 'lucide-react';
+import { Mail } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -20,7 +20,7 @@ const Contact = () => {
             <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-2xl">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-600 rounded-lg flex items-center justify-center mr-4">
-                  <contact className="text-white" size={24} />
+                  <Mail className="text-white" size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Get in Touch</h3>
               </div>

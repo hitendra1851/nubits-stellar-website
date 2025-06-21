@@ -13,8 +13,8 @@ const Hero = () => {
           {/* Hero Image */}
           <div className="mb-8">
             <img 
-              src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-              alt="Technology Innovation" 
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
+              alt="AI Technology Circuit Board" 
               className="w-full max-w-md mx-auto rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-500"
             />
           </div>
