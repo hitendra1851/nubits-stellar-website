@@ -1,6 +1,7 @@
 
 import { FileText, MessageSquare, Shield, Volume2, Globe, Cog, 
          Heart, DollarSign, Scale, Factory, ShoppingCart, GraduationCap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const coreServices = [
@@ -8,37 +9,43 @@ const Services = () => {
       icon: <FileText size={32} />,
       title: "Text Extraction & OCR",
       description: "Advanced optical character recognition and intelligent text extraction from documents, images, and scanned files with 99%+ accuracy.",
-      features: ["Multi-format document processing", "Handwriting recognition", "Table and form extraction"]
+      features: ["Multi-format document processing", "Handwriting recognition", "Table and form extraction"],
+      link: "/services/text-extraction"
     },
     {
       icon: <MessageSquare size={32} />,
       title: "Natural Language Processing",
       description: "Sophisticated NLP capabilities for sentiment analysis, entity recognition, and intelligent content understanding across multiple languages.",
-      features: ["Sentiment analysis", "Named entity recognition", "Language detection"]
+      features: ["Sentiment analysis", "Named entity recognition", "Language detection"],
+      link: "/services/nlp"
     },
     {
       icon: <Shield size={32} />,
       title: "PHI & Data Protection",
       description: "HIPAA-compliant protected health information identification and secure data handling for healthcare and sensitive industries.",
-      features: ["HIPAA compliance", "PII identification", "Data anonymization"]
+      features: ["HIPAA compliance", "PII identification", "Data anonymization"],
+      link: "/services/data-protection"
     },
     {
       icon: <Volume2 size={32} />,
       title: "Text-to-Audio Conversion",
       description: "High-quality speech synthesis and audio generation from text content with natural-sounding voices in multiple languages.",
-      features: ["Natural voice synthesis", "Multiple language support", "Custom voice training"]
+      features: ["Natural voice synthesis", "Multiple language support", "Custom voice training"],
+      link: "/services/text-to-audio"
     },
     {
       icon: <Globe size={32} />,
       title: "Multilingual Processing",
       description: "Comprehensive language support for global businesses with translation, localization, and cross-language content analysis.",
-      features: ["50+ language support", "Real-time translation", "Cultural adaptation"]
+      features: ["50+ language support", "Real-time translation", "Cultural adaptation"],
+      link: "/services/multilingual"
     },
     {
       icon: <Cog size={32} />,
       title: "Custom AI Solutions",
       description: "Tailored artificial intelligence solutions designed specifically for your business needs and industry requirements.",
-      features: ["Custom model development", "API integration", "Scalable architecture"]
+      features: ["Custom model development", "API integration", "Scalable architecture"],
+      link: "/services/custom-ai"
     }
   ];
 
@@ -46,32 +53,38 @@ const Services = () => {
     {
       icon: <Heart size={24} />,
       title: "Healthcare",
-      description: "HIPAA-compliant solutions for medical records, patient data processing, and clinical documentation."
+      description: "HIPAA-compliant solutions for medical records, patient data processing, and clinical documentation.",
+      link: "/industries/healthcare"
     },
     {
       icon: <DollarSign size={24} />,
       title: "Financial Services",
-      description: "Secure document processing, compliance monitoring, and risk assessment for financial institutions."
+      description: "Secure document processing, compliance monitoring, and risk assessment for financial institutions.",
+      link: "/industries/financial"
     },
     {
       icon: <Scale size={24} />,
       title: "Legal",
-      description: "Contract analysis, legal document processing, and compliance monitoring for law firms."
+      description: "Contract analysis, legal document processing, and compliance monitoring for law firms.",
+      link: "/industries/legal"
     },
     {
       icon: <Factory size={24} />,
       title: "Manufacturing",
-      description: "Quality control documentation, safety compliance, and operational efficiency optimization."
+      description: "Quality control documentation, safety compliance, and operational efficiency optimization.",
+      link: "/industries/manufacturing"
     },
     {
       icon: <ShoppingCart size={24} />,
       title: "Retail & E-commerce",
-      description: "Customer sentiment analysis, product optimization, and multilingual content processing."
+      description: "Customer sentiment analysis, product optimization, and multilingual content processing.",
+      link: "/industries/retail"
     },
     {
       icon: <GraduationCap size={24} />,
       title: "Education",
-      description: "Academic document processing, research analysis, and educational content creation."
+      description: "Academic document processing, research analysis, and educational content creation.",
+      link: "/industries/education"
     }
   ];
 
@@ -81,9 +94,9 @@ const Services = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Our Core <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Solutions</span>
+            Our Core <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Solutions</span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-teal-600 mx-auto mb-8"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-8"></div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
             Comprehensive AI-Powered Services - Unlock the power of artificial intelligence with our comprehensive suite of enterprise-grade solutions
           </p>
@@ -93,7 +106,7 @@ const Services = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {coreServices.map((service, index) => (
             <div key={index} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 group">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-teal-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
@@ -103,15 +116,18 @@ const Services = () => {
               <div className="space-y-2 mb-6">
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center text-sm text-gray-700">
-                    <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full mr-3"></div>
                     {feature}
                   </div>
                 ))}
               </div>
               
-              <button className="w-full bg-gradient-to-r from-blue-600 to-teal-600 text-white py-2 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-teal-700 transition-all duration-200">
+              <Link 
+                to={service.link}
+                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 block text-center"
+              >
                 Learn More
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -119,7 +135,7 @@ const Services = () => {
         {/* Industries Section */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Industries We <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Serve</span>
+            Industries We <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Serve</span>
           </h3>
           <p className="text-lg text-gray-600 max-w-4xl mx-auto">
             Specialized Solutions for Every Sector - Our AI technologies are tailored to meet the unique challenges of diverse business sectors
@@ -130,15 +146,18 @@ const Services = () => {
           {industries.map((industry, index) => (
             <div key={index} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 group">
               <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-teal-600 rounded-lg flex items-center justify-center mr-4 text-white group-hover:scale-110 transition-transform duration-300">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mr-4 text-white group-hover:scale-110 transition-transform duration-300">
                   {industry.icon}
                 </div>
                 <h4 className="text-lg font-bold text-gray-900">{industry.title}</h4>
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">{industry.description}</p>
-              <button className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200">
+              <Link 
+                to={industry.link}
+                className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200 block"
+              >
                 Explore {industry.title} Solutions →
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -147,7 +166,7 @@ const Services = () => {
         <div className="mt-20 bg-white rounded-3xl p-8 md:p-12 shadow-lg">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose <span className="bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">Nubits.AI</span>
+              Why Choose <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Nubits.AI</span>
             </h3>
             <p className="text-lg text-gray-600">
               Leading the Future of AI Innovation - We combine cutting-edge technology with deep industry expertise
@@ -156,26 +175,29 @@ const Services = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-2">99.2%</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">99.2%</div>
               <h4 className="font-semibold text-gray-900 mb-2">Accuracy Rate</h4>
               <p className="text-sm text-gray-600">Industry-leading accuracy for reliable results</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-2">&lt; 2s</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">&lt; 2s</div>
               <h4 className="font-semibold text-gray-900 mb-2">Processing Speed</h4>
               <p className="text-sm text-gray-600">Lightning-fast processing for immediate results</p>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent mb-2">99.9%</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">99.9%</div>
               <h4 className="font-semibold text-gray-900 mb-2">Uptime</h4>
               <p className="text-sm text-gray-600">Reliable service you can count on</p>
             </div>
           </div>
 
           <div className="text-center">
-            <button className="bg-gradient-to-r from-blue-600 to-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-teal-700 transition-all duration-200 shadow-md">
+            <Link 
+              to="/get-started"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md inline-block"
+            >
               Start Your AI Journey
-            </button>
+            </Link>
           </div>
         </div>
       </div>
