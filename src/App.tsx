@@ -10,6 +10,7 @@ import ServicesPage from "./pages/Services";
 import GetStarted from "./pages/GetStarted";
 import Demo from "./pages/Demo";
 import Contact from "./pages/Contact";
+import EDiscoveryTools from "./pages/EDiscoveryTools";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<ServicesPage />} />
+          <Route path="/ediscovery-tools" element={<EDiscoveryTools />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/contact" element={<Contact />} />
