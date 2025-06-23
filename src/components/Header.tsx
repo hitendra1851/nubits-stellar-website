@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Brain } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,10 +13,12 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-sm">N</span>
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-400 to-teal-400 rounded-lg flex items-center justify-center mr-3">
+                <Brain className="text-white" size={20} />
               </div>
-              <span className="text-xl font-bold text-gray-900">Nubits.AI</span>
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                Nubits.AI
+              </span>
             </Link>
           </div>
 
