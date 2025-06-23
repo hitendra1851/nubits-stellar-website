@@ -69,10 +69,10 @@ const ServicesPage = () => {
                 </li>
               </ul>
               <Link 
-                to="/services/custom-software"
+                to="/contact"
                 className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
               >
-                Learn More →
+                Get Started →
               </Link>
             </div>
 
@@ -101,10 +101,10 @@ const ServicesPage = () => {
                 </li>
               </ul>
               <Link 
-                to="/services/ai-ml"
+                to="/contact"
                 className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
               >
-                Learn More →
+                Get Started →
               </Link>
             </div>
           </div>
@@ -175,12 +175,12 @@ const ServicesPage = () => {
                 Request Consultation
                 <ArrowRight className="ml-2" size={20} />
               </Link>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>

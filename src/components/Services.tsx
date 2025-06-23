@@ -9,43 +9,37 @@ const Services = () => {
       icon: <FileText size={32} />,
       title: "Text Extraction & OCR",
       description: "Advanced optical character recognition and intelligent text extraction from documents, images, and scanned files with 99%+ accuracy.",
-      features: ["Multi-format document processing", "Handwriting recognition", "Table and form extraction"],
-      link: "/services/text-extraction"
+      features: ["Multi-format document processing", "Handwriting recognition", "Table and form extraction"]
     },
     {
       icon: <MessageSquare size={32} />,
       title: "Natural Language Processing",
       description: "Sophisticated NLP capabilities for sentiment analysis, entity recognition, and intelligent content understanding across multiple languages.",
-      features: ["Sentiment analysis", "Named entity recognition", "Language detection"],
-      link: "/services/nlp"
+      features: ["Sentiment analysis", "Named entity recognition", "Language detection"]
     },
     {
       icon: <Shield size={32} />,
       title: "PHI & Data Protection",
       description: "HIPAA-compliant protected health information identification and secure data handling for healthcare and sensitive industries.",
-      features: ["HIPAA compliance", "PII identification", "Data anonymization"],
-      link: "/services/data-protection"
+      features: ["HIPAA compliance", "PII identification", "Data anonymization"]
     },
     {
       icon: <Volume2 size={32} />,
       title: "Text-to-Audio Conversion",
       description: "High-quality speech synthesis and audio generation from text content with natural-sounding voices in multiple languages.",
-      features: ["Natural voice synthesis", "Multiple language support", "Custom voice training"],
-      link: "/services/text-to-audio"
+      features: ["Natural voice synthesis", "Multiple language support", "Custom voice training"]
     },
     {
       icon: <Globe size={32} />,
       title: "Multilingual Processing",
       description: "Comprehensive language support for global businesses with translation, localization, and cross-language content analysis.",
-      features: ["50+ language support", "Real-time translation", "Cultural adaptation"],
-      link: "/services/multilingual"
+      features: ["50+ language support", "Real-time translation", "Cultural adaptation"]
     },
     {
       icon: <Cog size={32} />,
       title: "Custom AI Solutions",
       description: "Tailored artificial intelligence solutions designed specifically for your business needs and industry requirements.",
-      features: ["Custom model development", "API integration", "Scalable architecture"],
-      link: "/services/custom-ai"
+      features: ["Custom model development", "API integration", "Scalable architecture"]
     }
   ];
 
@@ -53,38 +47,32 @@ const Services = () => {
     {
       icon: <Heart size={24} />,
       title: "Healthcare",
-      description: "HIPAA-compliant solutions for medical records, patient data processing, and clinical documentation.",
-      link: "/industries/healthcare"
+      description: "HIPAA-compliant solutions for medical records, patient data processing, and clinical documentation."
     },
     {
       icon: <DollarSign size={24} />,
       title: "Financial Services",
-      description: "Secure document processing, compliance monitoring, and risk assessment for financial institutions.",
-      link: "/industries/financial"
+      description: "Secure document processing, compliance monitoring, and risk assessment for financial institutions."
     },
     {
       icon: <Scale size={24} />,
       title: "Legal",
-      description: "Contract analysis, legal document processing, and compliance monitoring for law firms.",
-      link: "/industries/legal"
+      description: "Contract analysis, legal document processing, and compliance monitoring for law firms."
     },
     {
       icon: <Factory size={24} />,
       title: "Manufacturing",
-      description: "Quality control documentation, safety compliance, and operational efficiency optimization.",
-      link: "/industries/manufacturing"
+      description: "Quality control documentation, safety compliance, and operational efficiency optimization."
     },
     {
       icon: <ShoppingCart size={24} />,
       title: "Retail & E-commerce",
-      description: "Customer sentiment analysis, product optimization, and multilingual content processing.",
-      link: "/industries/retail"
+      description: "Customer sentiment analysis, product optimization, and multilingual content processing."
     },
     {
       icon: <GraduationCap size={24} />,
       title: "Education",
-      description: "Academic document processing, research analysis, and educational content creation.",
-      link: "/industries/education"
+      description: "Academic document processing, research analysis, and educational content creation."
     }
   ];
 
@@ -123,10 +111,10 @@ const Services = () => {
               </div>
               
               <Link 
-                to={service.link}
+                to="/contact"
                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 block text-center"
               >
-                Learn More
+                Get Started
               </Link>
             </div>
           ))}
@@ -151,12 +139,12 @@ const Services = () => {
                 </div>
                 <h4 className="text-lg font-bold text-gray-900">{industry.title}</h4>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">{industry.description}</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">{industry.description}</p>
               <Link 
-                to={industry.link}
-                className="mt-4 text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200 block"
+                to="/contact"
+                className="text-blue-600 hover:text-blue-800 font-medium text-sm transition-colors duration-200 block"
               >
-                Explore {industry.title} Solutions →
+                Contact Us for {industry.title} Solutions →
               </Link>
             </div>
           ))}
@@ -175,7 +163,7 @@ const Services = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">99.2%</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">95%</div>
               <h4 className="font-semibold text-gray-900 mb-2">Accuracy Rate</h4>
               <p className="text-sm text-gray-600">Industry-leading accuracy for reliable results</p>
             </div>

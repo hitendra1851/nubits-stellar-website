@@ -52,7 +52,7 @@ const Hero = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 text-center lg:text-left">
               <div>
-                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">99%</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">95%</div>
                 <div className="text-gray-600">Accuracy Rate</div>
               </div>
               <div>
@@ -84,10 +84,10 @@ const Hero = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Accuracy</span>
-                  <span className="font-semibold text-green-500">99.2%</span>
+                  <span className="font-semibold text-green-500">95%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full" style={{ width: '99.2%' }}></div>
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full" style={{ width: '95%' }}></div>
                 </div>
               </div>
 
