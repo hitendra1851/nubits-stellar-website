@@ -1,31 +1,77 @@
 
-import { ArrowRight, CheckCircle, Video, Calendar, MessageSquare } from 'lucide-react';
 import { useState } from 'react';
+import { ArrowRight, CheckCircle, Mail, User, Building } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { useToast } from "@/hooks/use-toast";
 
 const Demo = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    phone: '',
-    employees: '',
-    useCase: '',
+    service: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Demo request submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      // Create email content
+      const emailContent = `
+New Demo Request from Nubits.AI Website
+
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company}
+Service Interest: ${formData.service}
+Message: ${formData.message}
+
+Submitted at: ${new Date().toLocaleString()}
+      `;
+
+      // Create mailto link with multiple recipients
+      const subject = encodeURIComponent('New Demo Request - Nubits.AI');
+      const body = encodeURIComponent(emailContent);
+      const mailtoLink = `mailto:contact@nubitsaitech.com,hitendra.patel2986@gmail.com?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
+
+      toast({
+        title: "Demo Request Submitted!",
+        description: "Your email client has been opened with the demo request details. Please send the email to complete your request.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        service: '',
+        message: ''
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an issue processing your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -33,123 +79,73 @@ const Demo = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <section className="pt-24 pb-16 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Experience Our{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                AI Solutions
-              </span>{' '}
-              Live
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              See how our cutting-edge AI technology can transform your business operations. 
-              Book a personalized demo tailored to your specific industry and use case.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Options */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center p-8 bg-gray-50 rounded-xl">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Video className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Live Demo</h3>
-              <p className="text-gray-600 mb-4">
-                Interactive 30-minute session with our AI experts showcasing real-time processing capabilities
-              </p>
-              <ul className="text-sm text-gray-600 text-left space-y-2">
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  Real-time AI processing
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  Custom use case scenarios
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  Q&A with experts
-                </li>
-              </ul>
-            </div>
-
-            <div className="text-center p-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-white">
-              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calendar className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold mb-4">Consultation Call</h3>
-              <p className="mb-4 opacity-90">
-                Strategic discussion about your business needs and how AI can drive growth and efficiency
-              </p>
-              <ul className="text-sm text-left space-y-2 opacity-90">
-                <li className="flex items-center">
-                  <CheckCircle className="text-white mr-2" size={16} />
-                  Business needs assessment
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-white mr-2" size={16} />
-                  ROI calculation
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-white mr-2" size={16} />
-                  Implementation roadmap
-                </li>
-              </ul>
-            </div>
-
-            <div className="text-center p-8 bg-gray-50 rounded-xl">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="text-white" size={24} />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Technical Deep Dive</h3>
-              <p className="text-gray-600 mb-4">
-                Detailed technical session for IT teams covering integration, security, and scalability
-              </p>
-              <ul className="text-sm text-gray-600 text-left space-y-2">
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  API documentation review
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  Security & compliance
-                </li>
-                <li className="flex items-center">
-                  <CheckCircle className="text-green-500 mr-2" size={16} />
-                  Integration planning
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Demo Request Form */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Book Your{' '}
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 Free Demo
               </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Tell us about your needs and we'll customize the perfect demo for you
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Experience the power of our AI solutions with a personalized demo tailored to your specific business needs. 
+              See how our technology can transform your operations.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+      {/* Demo Form Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Benefits */}
+            <div className="space-y-8">
+              <div className="bg-gradient-to-br from-blue-50 to-teal-50 p-8 rounded-2xl">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">What You'll Get</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />
+                    <span className="text-gray-700">Personalized 30-minute demo session</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />
+                    <span className="text-gray-700">AI solution recommendations for your industry</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />
+                    <span className="text-gray-700">Custom implementation roadmap</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />
+                    <span className="text-gray-700">ROI analysis and cost estimates</span>
+                  </div>
+                  <div className="flex items-center">
+                    <CheckCircle className="text-green-500 mr-3 flex-shrink-0" size={20} />
+                    <span className="text-gray-700">Free 30-day trial access</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border-2 border-gray-200 rounded-2xl p-6">
+                <h4 className="text-lg font-bold text-gray-900 mb-4">Demo Includes:</h4>
+                <ul className="space-y-2">
+                  <li className="text-gray-700">• Live demonstration of AI capabilities</li>
+                  <li className="text-gray-700">• Q&A session with our experts</li>
+                  <li className="text-gray-700">• Security and compliance overview</li>
+                  <li className="text-gray-700">• Integration planning discussion</li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Demo Form */}
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Request Your Demo</h2>
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <User className="inline mr-2" size={16} />
                     Full Name *
                   </label>
                   <input
@@ -166,6 +162,7 @@ const Demo = () => {
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <Mail className="inline mr-2" size={16} />
                     Business Email *
                   </label>
                   <input
@@ -179,11 +176,10 @@ const Demo = () => {
                     placeholder="your.email@company.com"
                   />
                 </div>
-              </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                    <Building className="inline mr-2" size={16} />
                     Company Name *
                   </label>
                   <input
@@ -199,142 +195,54 @@ const Demo = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    placeholder="+1 (555) 123-4567"
-                  />
-                </div>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="employees" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company Size
+                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                    Area of Interest
                   </label>
                   <select
-                    id="employees"
-                    name="employees"
-                    value={formData.employees}
+                    id="service"
+                    name="service"
+                    value={formData.service}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   >
-                    <option value="">Select company size</option>
-                    <option value="1-10">1-10 employees</option>
-                    <option value="11-50">11-50 employees</option>
-                    <option value="51-200">51-200 employees</option>
-                    <option value="201-1000">201-1000 employees</option>
-                    <option value="1000+">1000+ employees</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="useCase" className="block text-sm font-medium text-gray-700 mb-2">
-                    Primary Use Case
-                  </label>
-                  <select
-                    id="useCase"
-                    name="useCase"
-                    value={formData.useCase}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Select primary use case</option>
-                    <option value="document-processing">Document Processing</option>
-                    <option value="data-extraction">Data Extraction</option>
-                    <option value="nlp-analysis">NLP Analysis</option>
+                    <option value="">Select Service</option>
+                    <option value="text-extraction">Text Extraction & OCR</option>
+                    <option value="nlp">Natural Language Processing</option>
+                    <option value="phi-protection">PHI & Data Protection</option>
+                    <option value="text-to-audio">Text-to-Audio Conversion</option>
                     <option value="multilingual">Multilingual Processing</option>
-                    <option value="compliance">Compliance & Security</option>
-                    <option value="custom">Custom Solution</option>
+                    <option value="custom">Custom AI Solutions</option>
                   </select>
                 </div>
-              </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Information
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell us about your specific requirements, challenges, or questions..."
-                ></textarea>
-              </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Tell us about your project
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                    placeholder="Describe your current challenges and goals..."
+                  ></textarea>
+                </div>
 
-              <div className="text-center pt-6">
                 <button
                   type="submit"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 px-8 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-lg flex items-center justify-center mx-auto"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center disabled:opacity-50"
                 >
-                  Schedule My Demo
+                  {isSubmitting ? 'Processing...' : 'Book Your Free Demo'}
                   <ArrowRight className="ml-2" size={20} />
                 </button>
-                <p className="text-sm text-gray-500 mt-4">
-                  By submitting this form, you agree to our privacy policy. We'll contact you within 24 hours to schedule your demo.
+
+                <p className="text-xs text-gray-500 text-center">
+                  By submitting this form, you agree to our privacy policy and terms of service.
                 </p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* What to Expect */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What to{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Expect
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600">
-              Here's what happens after you book your demo
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
-                1
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Confirmation</h3>
-              <p className="text-gray-600 text-sm">We'll confirm your demo within 2 hours and send calendar invitation</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
-                2
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Preparation</h3>
-              <p className="text-gray-600 text-sm">Our team prepares customized demo scenarios based on your use case</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
-                3
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Demo Session</h3>
-              <p className="text-gray-600 text-sm">Live demonstration with Q&A, typically 30-45 minutes</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white text-xl font-bold">
-                4
-              </div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">Next Steps</h3>
-              <p className="text-gray-600 text-sm">Receive proposal, trial access, and implementation timeline</p>
+              </form>
             </div>
           </div>
         </div>

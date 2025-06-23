@@ -1,11 +1,12 @@
 
 import { Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-5 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-2">
@@ -26,46 +27,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/about" className="text-gray-400 hover:text-white transition-colors duration-200">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/services" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Solutions Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Solutions</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Text Extraction
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  NLP Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  OCR Technology
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  Text-to-Audio
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -75,24 +49,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/terms-of-service" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/cookie-policy" className="text-gray-400 hover:text-white transition-colors duration-200">
                   Cookie Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Link to="/gdpr" className="text-gray-400 hover:text-white transition-colors duration-200">
                   GDPR
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -102,10 +76,10 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-800">
           <h3 className="text-lg font-semibold mb-4">Industries</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Healthcare</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Finance</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Legal</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Manufacturing</a>
+            <span className="text-gray-400">Healthcare</span>
+            <span className="text-gray-400">Finance</span>
+            <span className="text-gray-400">Legal</span>
+            <span className="text-gray-400">Manufacturing</span>
           </div>
         </div>
 
